@@ -1,0 +1,21 @@
+name: CI
+
+on:
+  push:
+    branches: [master, modernize/2026]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          persist-credentials: false
+      - run: shellcheck --version
+      - run: make lint
+      - run: make test
