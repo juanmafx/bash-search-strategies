@@ -1,6 +1,6 @@
 # Release Notes: v1.0.0
 
-This is the first versioned release of `unix3`, a modernization of a 2019 shell assignment. It has not been tagged or published yet.
+This is the first versioned release of `unix3`, a modernization of a 2019 shell assignment. It has not been tagged or released yet.
 
 ## Highlights
 

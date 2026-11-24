@@ -80,6 +80,28 @@ class LoaderTests(unittest.TestCase):
         self.addCleanup(connection.close)
         self.assertEqual(connection.execute("SELECT COUNT(*) FROM simulation_runs").fetchone()[0], 0)
 
+    def test_rejects_malformed_rows_without_traceback(self):
+        header = "trial,seed,strategy,upper_bound,target,attempts\n"
+        cases = {
+            "integer_overflow": "1,1,linear,5,99999999999999999999,1\n",
+            "oversized_field": f"1,1,linear,5,{'9' * 200000},1\n",
+            "underscore_integer": "1_0,1,linear,5,0,1\n",
+            "signed_integer": "1,+1,linear,5,0,1\n",
+            "padded_integer": "1,1,linear,5, 0,1\n",
+            "non_ascii_digit": "1,1,linear,5,٣,1\n",
+            "leading_zero": "01,1,linear,5,0,1\n",
+            "target_above_bound": "1,1,linear,5,6,7\n",
+            "trial_gap": "1,1,linear,5,0,1\n3,1,linear,5,0,1\n",
+            "trial_not_from_one": "2,1,linear,5,0,1\n",
+            "short_row": "1,1,linear\n",
+        }
+        for name, rows in cases.items():
+            with self.subTest(case=name):
+                self.csv_path.write_text(header + rows, encoding="utf-8")
+                result = self.load()
+                self.assertEqual(result.returncode, 2)
+                self.assertNotIn("Traceback", result.stderr)
+
     def test_strategy_text_is_bound_not_executed(self):
         header = "trial,seed,strategy,upper_bound,target,attempts\n"
         hostile = "linear'); DROP TABLE simulation_runs; --"

@@ -1,8 +1,9 @@
+import subprocess
 import tempfile
 import unittest
 from pathlib import Path
 
-from tests.support.harness import PROJECT_ROOT, run_cli
+from tests.support.harness import ENTRY_POINT, PROJECT_ROOT, clean_environment, run_cli
 
 
 class InputSafetyTests(unittest.TestCase):
@@ -62,6 +63,32 @@ class InputSafetyTests(unittest.TestCase):
         result = run_cli("--dir", str(self.directory), stdin="1\n", timeout=5, extra_environment=hostile)
         self.assertEqual(result.returncode, 0)
         self.assertIn("Solved in 1 attempt(s).", result.stdout)
+
+    def test_inherited_noglob_cannot_change_the_target(self):
+        for name in ("first", "second", "third"):
+            (self.directory / name).touch()
+        hostile = {"SHELLOPTS": "noglob"}
+        result = run_cli("--dir", str(self.directory), stdin="3\n", timeout=5, extra_environment=hostile)
+        self.assertEqual(result.returncode, 0)
+        self.assertIn("Solved in 1 attempt(s).", result.stdout)
+
+    def test_symlinked_launcher_ignores_modules_beside_the_link(self):
+        planted = self.directory / "src" / "guessinggame" / "core"
+        planted.mkdir(parents=True)
+        (planted / "validation.sh").write_text(f'touch "{self.sentinel}"\n', encoding="utf-8")
+        launcher = self.directory / "launcher.sh"
+        launcher.symlink_to(ENTRY_POINT)
+        result = subprocess.run(
+            ["bash", str(launcher), "--version"],
+            capture_output=True,
+            text=True,
+            env=clean_environment(),
+            timeout=5,
+            check=False,
+        )
+        self.assertEqual(result.returncode, 0)
+        self.assertTrue(result.stdout.startswith("guessinggame "))
+        self.assertFalse(self.sentinel.exists())
 
     def test_source_has_no_dynamic_evaluation(self):
         forbidden = ("eval ", "source <(", "bash -c", "sh -c")

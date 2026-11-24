@@ -1,8 +1,8 @@
 # Security Audit
 
-- **Date:** 2026-11-23
+- **Date:** 2026-11-23, independently reviewed 2026-11-24
 - **Scope:** all tracked files and the full git history of this repository
-- **Method:** manual code review, ShellCheck, targeted regression tests, and a pattern scan of history for keys, tokens, credentials, and email addresses
+- **Method:** manual code review, ShellCheck, targeted regression tests, a pattern scan of history, and gitleaks 8.30.1 with redaction over history and the working tree
 
 ## Findings
 
@@ -13,6 +13,9 @@
 | A3 | Medium | End of input caused an endless loop once A2 was repaired. | Fixed |
 | A4 | Low | Counting with `ls` and `wc` miscounted filenames that contain newlines. | Fixed |
 | A5 | Low | The default make target appended to the tracked README on every run. | Fixed |
+| A6 | Medium | A symlinked launcher sourced modules from the link's directory, so files planted beside the link ran as code. | Fixed |
+| A7 | Low | An inherited `SHELLOPTS=noglob` disabled globbing, so every directory counted as one entry and the game accepted a wrong answer. | Fixed |
+| A8 | Low | The loader crashed with a traceback on oversized values and accepted non-canonical integers, targets above the bound, and non-sequential trials. | Fixed |
 
 ## Controls added
 
@@ -25,13 +28,18 @@
 
 ## Dependencies
 
-The runtime uses Bash and coreutils. The tests use only the Python standard library. There are no package manifests or vendored dependencies.
+The runtime uses Bash and coreutils. The tests use only the Python standard library. There are no package manifests or vendored dependencies, so no ecosystem audit tool applies.
+
+## Not applicable
+
+The project has no web interface, network service, accounts, or stored credentials, so XSS, CSRF, authentication, and two-factor authentication do not apply.
 
 ## Secrets
 
-The history scan matched no private keys, access tokens, or credential assignments.
+gitleaks and the history scan matched no private keys, access tokens, or credential assignments. File contents contain no email addresses. Commit metadata from 2019 records the author's email address, as git does by default.
 
 ## Residual risk
 
 - The generator is predictable by design and must not be used for security purposes.
-- Earlier commits remain in git history unchanged. They contain the defects above but no secrets.
+- Earlier commits remain in git history unchanged. They contain the defects above and the author email in their metadata, but no secrets.
+- The loader trusts the `attempts` column, so a hand-edited CSV can record a false probe count.

@@ -16,7 +16,7 @@ It began as a short shell exercise. The 2019 script never actually played: its h
 
 - **Play** against a directory count or a seeded random target.
 - **Simulate** the `linear`, `bisection`, and `galloping` search strategies and emit one CSV row per trial.
-- **Reproduce** any simulation byte for byte from its seed.
+- **Reproduce** a simulation byte for byte from its seed, strategy, bound, and trial count.
 - **Persist** results to SQLite through an optional schema and loader.
 
 ## Architecture
@@ -38,7 +38,7 @@ See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for module boundaries, algorith
 
 ## Quick start
 
-Requirements: Bash and coreutils. Python 3.11+ is needed only for the tests and the loader, GNU Make for the shortcuts, and ShellCheck for linting.
+Requirements: Bash with 64-bit integers and coreutils. Python 3.11+ is needed only for the tests and the loader, GNU Make for the shortcuts, ShellCheck for linting, and the `sqlite3` command only for the query example below.
 
 ```bash
 git clone https://github.com/juanmafx/unix3.git
@@ -64,7 +64,7 @@ Measured output of `simulate` with seed 42, bound 1023, and 1000 trials:
 | `bisection` | 9.119 | 11 |
 | `galloping` | 17.316 | 20 |
 
-`galloping` costs more here because it does not use the known upper bound. It is the applicable strategy when no bound is known.
+`galloping` costs more here because it does not use the known upper bound. It needs far fewer probes than `linear` when no bound is known.
 
 ## Configuration
 
@@ -100,6 +100,8 @@ The suite uses only the Python standard library. It cross-checks the shell code 
 
 - Input is matched against a strict decimal pattern before any arithmetic, because Bash arithmetic can execute embedded command substitutions.
 - The code uses no `eval` and does not parse `ls` output.
+- Modules load from the launcher's resolved location, so a symlink cannot redirect them to files beside the link.
+- The loader rejects non-canonical integers, out-of-range targets, and non-sequential trials before writing.
 - The generator is **not cryptographically secure**. It exists for reproducible experiments and must not be used for secrets.
 
 See [SECURITY.md](SECURITY.md) and [docs/SECURITY_AUDIT.md](docs/SECURITY_AUDIT.md).
@@ -111,4 +113,4 @@ See [SECURITY.md](SECURITY.md) and [docs/SECURITY_AUDIT.md](docs/SECURITY_AUDIT.
 
 ## Attribution and license
 
-The original script's header marks it as an assignment, but the repository does not record who set it. Credit for the exercise concept belongs to its unrecorded author, and the code here does not claim that concept as original. No license has been published for this repository, so default copyright applies.
+The original script's header marks it as an assignment. Its requirements match the peer-graded Bash, Make, Git, and GitHub assignment from *The Unix Workbench* (Johns Hopkins University, Coursera). The 2019 repository does not name its source, so this match is inferred. Credit for the exercise concept belongs to its authors, and this project does not claim that concept as original. No license has been published for this repository, so default copyright applies.

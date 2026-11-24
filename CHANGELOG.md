@@ -28,3 +28,6 @@ First versioned release. The earlier 2019 code carried no version number.
 - Guesses can no longer execute commands through shell arithmetic
 - End of input no longer causes an endless loop
 - Filenames containing newlines are counted correctly
+- An inherited `noglob` shell option can no longer change the directory count
+- A symlinked launcher loads modules from its real location instead of the link's directory
+- The loader reports malformed input as an error and rejects non-canonical integers, targets above the bound, and non-sequential trials

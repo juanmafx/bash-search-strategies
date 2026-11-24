@@ -8,13 +8,12 @@ The project is a single-process command-line tool with no client/server split, n
 guessinggame.sh
       |
       v
-   cli/main.sh ------> cli/play.sh
-      |                    |
-      v                    v
- simulation/simulate.sh   core/validation.sh
+ cli/main.sh ---> cli/play.sh ---> core/validation.sh
+      |
+      +---------> core/validation.sh, core/random.sh, core/target.sh
       |
       v
- strategies/search.sh    core/random.sh    core/target.sh
+ simulation/simulate.sh ---> core/random.sh, strategies/search.sh
 ```
 
 | Module | Responsibility |
@@ -30,6 +29,7 @@ guessinggame.sh
 ## Design decisions
 
 - **Validate before arithmetic.** Bash evaluates `-eq` and `-gt` operands inside `[[ ]]`, and everything inside `$(( ))`, as arithmetic expressions, so only text that passed the decimal pattern reaches them.
+- **Resolve the launcher first.** The entry point canonicalizes its own path before sourcing modules, so a symlink cannot load files planted beside the link.
 - **Globals for return values.** Generator and solver results use named globals because a `$(...)` call would fork per draw and discard generator state.
 - **Data on stdout, diagnostics on stderr.** Simulation output can be piped straight to a file.
 - **Explicit exit codes.** Scripts can distinguish a win, bad usage, exhausted attempts, and ended input.
@@ -61,7 +61,7 @@ The generator is Marsaglia's xorshift32 (shifts 13, 17, 5), chosen because every
 
 ## Persistence
 
-`db/schema.sql` defines `simulation_runs`, `trial_results`, and the `run_summary` view, with `STRICT` typing, range checks, and cascading deletes. `tools/load_results.py` validates a CSV and inserts it in one transaction using bound parameters.
+`db/schema.sql` defines `simulation_runs`, `trial_results`, and the `run_summary` view, with `STRICT` typing, range checks, and cascading deletes. `tools/load_results.py` checks the header, canonical integers, sequential trials, a single run per file, and that each target is within the bound, then inserts the rows in one transaction using bound parameters. It does not recompute `attempts`, so it cannot detect a forged probe count.
 
 ## Testing strategy
 

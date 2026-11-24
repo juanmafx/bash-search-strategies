@@ -3,8 +3,9 @@
 set -euo pipefail
 export LC_ALL=C
 
-PROJECT_ROOT="$(cd -P -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
-readonly PROJECT_ROOT
+SCRIPT_PATH="$(readlink -f -- "${BASH_SOURCE[0]}")"
+PROJECT_ROOT="${SCRIPT_PATH%/*}"
+readonly SCRIPT_PATH PROJECT_ROOT
 
 source "$PROJECT_ROOT/src/guessinggame/core/validation.sh"
 source "$PROJECT_ROOT/src/guessinggame/core/random.sh"
