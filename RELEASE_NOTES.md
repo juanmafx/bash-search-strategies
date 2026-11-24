@@ -1,18 +1,12 @@
-# Release Notes: v1.0.0
+# Release Notes: v1.0.1
 
-This is the first versioned release of `unix3`, a modernization of a 2019 shell assignment. It has not been tagged or released yet.
+Released 2026-11-24.
 
-## Highlights
-
-- The game works: the 2019 script declared a win without reading any input.
-- All input is validated before use, closing a command-execution path in the original logic.
-- A reproducible simulator compares linear, bisection, and galloping search.
-- Automated tests cover behavior, algorithm bounds, generator statistics, and hostile input.
+This is a documentation-only patch release. The release notes and security audit now reflect that v1.0.0 was published on 2026-11-24 and that the pre-2026 history was removed from every branch and tag. No code behaviour changed.
 
 ## Upgrade notes
 
-- `make` no longer modifies `README.md`. Use `make set_file` to generate `build/project-info.md`.
-- Scripts that call the game should handle exit codes `2`, `3`, and `4`.
+No action is needed when upgrading from v1.0.0. See the [changelog](CHANGELOG.md) for the full v1.0.0 change list and its breaking changes.
 
 ## Verification
 

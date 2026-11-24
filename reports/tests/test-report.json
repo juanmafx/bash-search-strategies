@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-11-24T03:35:49Z",
+  "generated_at": "2026-11-24T22:54:43Z",
   "command": "make report",
-  "source_sha256": "8ef94eb617adb1bac535b7d068c137af71bf24e14f21d830a4ed3af09259b4d3",
+  "source_sha256": "6e5f4bbbf687bfe26d6378ab65f7d603ea080bb5534f2800de0dc1bf6f4e6b4f",
   "environment": {
     "python": "3.14.4",
     "bash": "GNU bash, version 5.3.9(1)-release (x86_64-pc-linux-gnu)",
@@ -14,128 +14,128 @@
     "error": 0,
     "skipped": 0
   },
-  "duration_seconds": 12.63,
+  "duration_seconds": 9.74,
   "successful": true,
   "results": [
     {
       "test": "tests.integration.test_cli_play.PlayDirectoryTests.test_correct_guess_wins",
       "outcome": "passed",
-      "seconds": 0.0159
+      "seconds": 0.0076
     },
     {
       "test": "tests.integration.test_cli_play.PlayDirectoryTests.test_crlf_input_is_accepted",
       "outcome": "passed",
-      "seconds": 0.0126
+      "seconds": 0.0081
     },
     {
       "test": "tests.integration.test_cli_play.PlayDirectoryTests.test_empty_input_does_not_win",
       "outcome": "passed",
-      "seconds": 0.012
+      "seconds": 0.0081
     },
     {
       "test": "tests.integration.test_cli_play.PlayDirectoryTests.test_end_of_input_terminates",
       "outcome": "passed",
-      "seconds": 0.0098
+      "seconds": 0.0093
     },
     {
       "test": "tests.integration.test_cli_play.PlayDirectoryTests.test_final_line_without_newline_is_read",
       "outcome": "passed",
-      "seconds": 0.0127
+      "seconds": 0.0092
     },
     {
       "test": "tests.integration.test_cli_play.PlayDirectoryTests.test_hints_then_win",
       "outcome": "passed",
-      "seconds": 0.0112
+      "seconds": 0.0099
     },
     {
       "test": "tests.integration.test_cli_play.PlayDirectoryTests.test_invalid_guess_is_not_counted",
       "outcome": "passed",
-      "seconds": 0.0107
+      "seconds": 0.0098
     },
     {
       "test": "tests.integration.test_cli_play.PlayDirectoryTests.test_max_attempts_stops_game",
       "outcome": "passed",
-      "seconds": 0.0138
+      "seconds": 0.0105
     },
     {
       "test": "tests.integration.test_cli_play.PlayRandomTests.test_seeded_target_is_reproducible",
       "outcome": "passed",
-      "seconds": 0.0124
+      "seconds": 0.0113
     },
     {
       "test": "tests.integration.test_cli_play.PlayRandomTests.test_unseeded_random_target_is_in_range",
       "outcome": "passed",
-      "seconds": 0.0228
+      "seconds": 0.0161
     },
     {
       "test": "tests.integration.test_cli_play.UsageTests.test_help",
       "outcome": "passed",
-      "seconds": 0.0157
+      "seconds": 0.0093
     },
     {
       "test": "tests.integration.test_cli_play.UsageTests.test_rejected_arguments_exit_with_usage_code",
       "outcome": "passed",
-      "seconds": 0.1409
+      "seconds": 0.0883
     },
     {
       "test": "tests.integration.test_cli_play.UsageTests.test_version_matches_file",
       "outcome": "passed",
-      "seconds": 0.0112
+      "seconds": 0.0093
     },
     {
       "test": "tests.integration.test_cli_simulate.SimulateTests.test_different_seeds_differ",
       "outcome": "passed",
-      "seconds": 0.0807
+      "seconds": 0.0466
     },
     {
       "test": "tests.integration.test_cli_simulate.SimulateTests.test_maximum_bound_is_supported",
       "outcome": "passed",
-      "seconds": 0.0247
+      "seconds": 0.0092
     },
     {
       "test": "tests.integration.test_cli_simulate.SimulateTests.test_rows_match_reference_models",
       "outcome": "passed",
-      "seconds": 0.1495
+      "seconds": 0.124
     },
     {
       "test": "tests.integration.test_cli_simulate.SimulateTests.test_same_seed_is_byte_identical",
       "outcome": "passed",
-      "seconds": 0.0582
+      "seconds": 0.0422
     },
     {
       "test": "tests.integration.test_cli_simulate.SimulateTests.test_summary_is_on_stderr_only",
       "outcome": "passed",
-      "seconds": 0.0111
+      "seconds": 0.0108
     },
     {
       "test": "tests.integration.test_makefile.MakefileTests.test_set_file_writes_build_output_and_preserves_readme",
       "outcome": "passed",
-      "seconds": 0.0182
+      "seconds": 0.0146
     },
     {
       "test": "tests.integration.test_schema.LoaderTests.test_loads_real_simulation_output",
       "outcome": "passed",
-      "seconds": 0.1298
+      "seconds": 0.088
     },
     {
       "test": "tests.integration.test_schema.LoaderTests.test_rejects_invalid_row_atomically",
       "outcome": "passed",
-      "seconds": 0.1105
+      "seconds": 0.074
     },
     {
       "test": "tests.integration.test_schema.LoaderTests.test_rejects_malformed_rows_without_traceback",
       "outcome": "passed",
-      "seconds": 1.1826
+      "seconds": 0.9075
     },
     {
       "test": "tests.integration.test_schema.LoaderTests.test_rejects_wrong_header",
       "outcome": "passed",
-      "seconds": 0.0987
+      "seconds": 0.0845
     },
     {
       "test": "tests.integration.test_schema.LoaderTests.test_strategy_text_is_bound_not_executed",
       "outcome": "passed",
-      "seconds": 0.1153
+      "seconds": 0.0883
     },
     {
       "test": "tests.integration.test_schema.SchemaTests.test_delete_cascades",
@@ -145,232 +145,232 @@
     {
       "test": "tests.integration.test_schema.SchemaTests.test_rejects_orphan_trial",
       "outcome": "passed",
-      "seconds": 0.0009
+      "seconds": 0.0008
     },
     {
       "test": "tests.integration.test_schema.SchemaTests.test_rejects_unknown_strategy",
       "outcome": "passed",
-      "seconds": 0.0009
+      "seconds": 0.0007
     },
     {
       "test": "tests.integration.test_schema.SchemaTests.test_schema_is_idempotent",
       "outcome": "passed",
-      "seconds": 0.0009
+      "seconds": 0.0007
     },
     {
       "test": "tests.properties.test_random_statistics.GeneratorStatistics.test_first_draw_across_adjacent_seeds_is_uniform",
       "outcome": "passed",
-      "seconds": 3.562
+      "seconds": 2.1618
     },
     {
       "test": "tests.properties.test_random_statistics.GeneratorStatistics.test_serial_pairs_chi_square",
       "outcome": "passed",
-      "seconds": 1.9812
+      "seconds": 1.1857
     },
     {
       "test": "tests.properties.test_random_statistics.GeneratorStatistics.test_uniformity_chi_square",
       "outcome": "passed",
-      "seconds": 3.131
+      "seconds": 2.7657
     },
     {
       "test": "tests.properties.test_random_statistics.GeneratorStatistics.test_values_stay_in_range",
       "outcome": "passed",
-      "seconds": 0.1928
+      "seconds": 0.2286
     },
     {
       "test": "tests.properties.test_strategy_properties.BisectionProperties.test_mean_matches_balanced_tree_for_complete_sizes",
       "outcome": "passed",
-      "seconds": 0.0461
+      "seconds": 0.0514
     },
     {
       "test": "tests.properties.test_strategy_properties.BisectionProperties.test_no_comparison_strategy_beats_information_bound",
       "outcome": "passed",
-      "seconds": 0.032
+      "seconds": 0.0336
     },
     {
       "test": "tests.properties.test_strategy_properties.BisectionProperties.test_shell_matches_model_on_random_ranges",
       "outcome": "passed",
-      "seconds": 0.3231
+      "seconds": 0.3034
     },
     {
       "test": "tests.properties.test_strategy_properties.BisectionProperties.test_worst_case_is_exactly_bit_length",
       "outcome": "passed",
-      "seconds": 0.0454
+      "seconds": 0.0434
     },
     {
       "test": "tests.properties.test_strategy_properties.GallopingProperties.test_bound_holds_for_large_random_targets",
       "outcome": "passed",
-      "seconds": 0.3733
+      "seconds": 0.4021
     },
     {
       "test": "tests.properties.test_strategy_properties.GallopingProperties.test_exhaustive_bound_and_model_agreement",
       "outcome": "passed",
-      "seconds": 0.0351
+      "seconds": 0.0391
     },
     {
       "test": "tests.properties.test_strategy_properties.ParserProperties.test_round_trip_for_random_integers",
       "outcome": "passed",
-      "seconds": 0.3046
+      "seconds": 0.3844
     },
     {
       "test": "tests.security.test_input_safety.InputSafetyTests.test_guess_is_never_evaluated",
       "outcome": "passed",
-      "seconds": 0.0277
+      "seconds": 0.0369
     },
     {
       "test": "tests.security.test_input_safety.InputSafetyTests.test_hostile_directory_name_is_treated_as_data",
       "outcome": "passed",
-      "seconds": 0.0057
+      "seconds": 0.0069
     },
     {
       "test": "tests.security.test_input_safety.InputSafetyTests.test_inherited_glob_settings_cannot_change_the_target",
       "outcome": "passed",
-      "seconds": 0.0056
+      "seconds": 0.0069
     },
     {
       "test": "tests.security.test_input_safety.InputSafetyTests.test_inherited_noglob_cannot_change_the_target",
       "outcome": "passed",
-      "seconds": 0.0057
+      "seconds": 0.0078
     },
     {
       "test": "tests.security.test_input_safety.InputSafetyTests.test_invalid_input_is_not_echoed",
       "outcome": "passed",
-      "seconds": 0.0057
+      "seconds": 0.0074
     },
     {
       "test": "tests.security.test_input_safety.InputSafetyTests.test_option_values_are_never_evaluated",
       "outcome": "passed",
-      "seconds": 0.0666
+      "seconds": 0.1087
     },
     {
       "test": "tests.security.test_input_safety.InputSafetyTests.test_simulate_options_are_never_evaluated",
       "outcome": "passed",
-      "seconds": 0.0881
+      "seconds": 0.1185
     },
     {
       "test": "tests.security.test_input_safety.InputSafetyTests.test_source_has_no_dynamic_evaluation",
       "outcome": "passed",
-      "seconds": 0.001
+      "seconds": 0.0015
     },
     {
       "test": "tests.security.test_input_safety.InputSafetyTests.test_symlinked_launcher_ignores_modules_beside_the_link",
       "outcome": "passed",
-      "seconds": 0.0048
+      "seconds": 0.006
     },
     {
       "test": "tests.unit.test_random.XorshiftTests.test_bounded_stream_matches_reference_model",
       "outcome": "passed",
-      "seconds": 0.0391
+      "seconds": 0.0487
     },
     {
       "test": "tests.unit.test_random.XorshiftTests.test_matches_published_xorshift32_vector",
       "outcome": "passed",
-      "seconds": 0.0015
+      "seconds": 0.0019
     },
     {
       "test": "tests.unit.test_random.XorshiftTests.test_seed_matches_reference_model",
       "outcome": "passed",
-      "seconds": 0.0086
+      "seconds": 0.0107
     },
     {
       "test": "tests.unit.test_random.XorshiftTests.test_state_is_never_zero_after_seeding",
       "outcome": "passed",
-      "seconds": 0.0017
+      "seconds": 0.0021
     },
     {
       "test": "tests.unit.test_random.XorshiftTests.test_step_matches_reference_model",
       "outcome": "passed",
-      "seconds": 0.0067
+      "seconds": 0.0091
     },
     {
       "test": "tests.unit.test_strategies.StrategyExampleTests.test_bisection_finds_midpoint_in_one_probe",
       "outcome": "passed",
-      "seconds": 0.0014
+      "seconds": 0.0019
     },
     {
       "test": "tests.unit.test_strategies.StrategyExampleTests.test_bisection_single_value_range",
       "outcome": "passed",
-      "seconds": 0.0014
+      "seconds": 0.0019
     },
     {
       "test": "tests.unit.test_strategies.StrategyExampleTests.test_bit_length",
       "outcome": "passed",
-      "seconds": 0.0017
+      "seconds": 0.0021
     },
     {
       "test": "tests.unit.test_strategies.StrategyExampleTests.test_galloping_hits_power_boundary",
       "outcome": "passed",
-      "seconds": 0.0014
+      "seconds": 0.0019
     },
     {
       "test": "tests.unit.test_strategies.StrategyExampleTests.test_galloping_zero_takes_one_probe",
       "outcome": "passed",
-      "seconds": 0.0015
+      "seconds": 0.0019
     },
     {
       "test": "tests.unit.test_strategies.StrategyExampleTests.test_linear_counts_every_probe",
       "outcome": "passed",
-      "seconds": 0.0014
+      "seconds": 0.002
     },
     {
       "test": "tests.unit.test_target.CountDirectoryEntriesTests.test_counts_files_and_directories",
       "outcome": "passed",
-      "seconds": 0.0021
+      "seconds": 0.0026
     },
     {
       "test": "tests.unit.test_target.CountDirectoryEntriesTests.test_directory_name_with_glob_characters",
       "outcome": "passed",
-      "seconds": 0.002
+      "seconds": 0.0025
     },
     {
       "test": "tests.unit.test_target.CountDirectoryEntriesTests.test_empty_directory_is_zero",
       "outcome": "passed",
-      "seconds": 0.0019
+      "seconds": 0.0024
     },
     {
       "test": "tests.unit.test_target.CountDirectoryEntriesTests.test_filename_with_newline_counts_once",
       "outcome": "passed",
-      "seconds": 0.002
+      "seconds": 0.0025
     },
     {
       "test": "tests.unit.test_target.CountDirectoryEntriesTests.test_hidden_entries_are_excluded",
       "outcome": "passed",
-      "seconds": 0.002
+      "seconds": 0.0025
     },
     {
       "test": "tests.unit.test_target.CountDirectoryEntriesTests.test_missing_directory_fails",
       "outcome": "passed",
-      "seconds": 0.0015
+      "seconds": 0.002
     },
     {
       "test": "tests.unit.test_validation.ParseBoundedIntegerTests.test_accepts_inclusive_bounds",
       "outcome": "passed",
-      "seconds": 0.003
+      "seconds": 0.0036
     },
     {
       "test": "tests.unit.test_validation.ParseBoundedIntegerTests.test_accepts_plain_decimal",
       "outcome": "passed",
-      "seconds": 0.0015
+      "seconds": 0.0018
     },
     {
       "test": "tests.unit.test_validation.ParseBoundedIntegerTests.test_leading_zeros_are_decimal_not_octal",
       "outcome": "passed",
-      "seconds": 0.0029
+      "seconds": 0.0036
     },
     {
       "test": "tests.unit.test_validation.ParseBoundedIntegerTests.test_rejects_more_than_ten_digits",
       "outcome": "passed",
-      "seconds": 0.0015
+      "seconds": 0.0019
     },
     {
       "test": "tests.unit.test_validation.ParseBoundedIntegerTests.test_rejects_non_decimal_forms",
       "outcome": "passed",
-      "seconds": 0.0172
+      "seconds": 0.0214
     },
     {
       "test": "tests.unit.test_validation.ParseBoundedIntegerTests.test_rejects_out_of_range",
       "outcome": "passed",
-      "seconds": 0.0029
+      "seconds": 0.0037
     }
   ]
 }

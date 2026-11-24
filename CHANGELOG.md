@@ -2,7 +2,13 @@
 
 This project follows [Semantic Versioning](https://semver.org/).
 
-## [1.0.0] - 2026-11-23
+## [1.0.1] - 2026-11-24
+
+### Changed
+
+- Documentation corrections: the release notes and security audit now reflect the published 1.0.0 release and the 2026-11-24 history rewrite. No code behaviour change.
+
+## [1.0.0] - 2026-11-24
 
 First versioned release. The earlier 2019 code carried no version number.
 

@@ -36,10 +36,10 @@ The project has no web interface, network service, accounts, or stored credentia
 
 ## Secrets
 
-gitleaks and the history scan matched no private keys, access tokens, or credential assignments. File contents contain no email addresses. Commit metadata from 2019 records the author's email address, as git does by default.
+gitleaks and the history scan matched no private keys, access tokens, or credential assignments. File contents contain no email addresses. The 2019 commits recorded the author's email address in their metadata, as git does by default; those commits were removed from every branch and tag by the 2026-11-24 history rewrite.
 
 ## Residual risk
 
 - The generator is predictable by design and must not be used for security purposes.
-- Earlier commits remain in git history unchanged. They contain the defects above and the author email in their metadata, but no secrets.
+- Earlier commits, which contained the defects above and the author email in their metadata but no secrets, were removed from every branch and tag by the 2026-11-24 history rewrite. They may stay reachable by direct SHA on GitHub until unreferenced objects are purged, so anything that was ever published should still be treated as exposed.
 - The loader trusts the `attempts` column, so a hand-edited CSV can record a false probe count.
