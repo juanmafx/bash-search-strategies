@@ -41,7 +41,7 @@ See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for module boundaries, algorith
 Requirements: Bash with 64-bit integers and coreutils. Python 3.11+ is needed only for the tests and the loader, GNU Make for the shortcuts, ShellCheck for linting, and the `sqlite3` command only for the query example below.
 
 ```bash
-git clone https://github.com/juanmafx/unix3.git
+git clone https://github.com/juanmafx/bash-search-strategies.git
 cd bash-search-strategies
 ./guessinggame.sh
 ```
