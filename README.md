@@ -1,4 +1,4 @@
-# unix3
+# bash-search-strategies
 
 A number-guessing game for the Unix command line, extended into a small, reproducible study of integer search strategies. It is written in Bash, with no runtime dependencies beyond Bash and coreutils.
 
@@ -42,7 +42,7 @@ Requirements: Bash with 64-bit integers and coreutils. Python 3.11+ is needed on
 
 ```bash
 git clone https://github.com/juanmafx/unix3.git
-cd unix3
+cd bash-search-strategies
 ./guessinggame.sh
 ```
 
